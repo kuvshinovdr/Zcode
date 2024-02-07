@@ -5,6 +5,19 @@
 
 TEST_SUITE("zcode/token")
 {
+  TEST_CASE("zcode::lex::trim")
+  {
+    using namespace zcode::lex;
+    REQUIRE(ltrim(u8"abc rtc"sv) == u8"abc rtc"sv);
+    REQUIRE(ltrim(u8"abc rtc \t\r\n"sv)  == u8"abc rtc \t\r\n"sv);
+    REQUIRE(ltrim(u8" \t\r\n abc rtc"sv) == u8"abc rtc"sv);
+    REQUIRE(rtrim(u8"abc rtc"sv) == u8"abc rtc"sv);
+    REQUIRE(rtrim(u8" \t\r\n abc rtc"sv) == u8" \t\r\n abc rtc"sv);
+    REQUIRE(rtrim(u8"abc rtc \t\r\n"sv)  == u8"abc rtc"sv);
+    REQUIRE(trim(u8"abc rtc"sv) == u8"abc rtc"sv);
+    REQUIRE(trim(u8"\r\n\t abc \tdaa \t\r\n") == u8"abc \tdaa");
+  }
+
   TEST_CASE("zcode::lex::split_to_lines")
   {
     std::u8string const input = u8"several\nlines\nare\n\nhere";
