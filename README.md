@@ -27,7 +27,7 @@ Both can be of two subtypes: with or without escape sequences.
 One-liner without escape sequences:
 
 ```
-'this is a string literal, it can't contain apostrophes and new-line characters'
+'this is a string literal, it can not contain apostrophes and new-line characters'
 ```
 
 One-liner with escape sequences is more C-like:
@@ -45,4 +45,20 @@ Supported escape sequences:
 * `\n` for new line;
 * `\0` for NUL character (code 0);
 * `\xh` or `\xhh`, where h is a hexadecimal digit, for a byte with a specified value;
-* `\{...}` for string interpolation,
+* `\{...}` for string interpolation
+
+Multi-liner without escape sequences occupies separate lines each starting with `\ ` (backslash and space).
+New lines are counted as a part of the string:
+
+```
+\ This is a multi-liner. It can contain ' or " or \ just like
+\ ordinary characters.
+```
+
+Multi-liner with escape sequences occupies separate lines each starting with `\\ ` (two backslashes and a space) and can contain the same escape sequences as `"..."` one-liner can:
+
+```
+\\ This is a multi-liner with escapes. New lines are still part of the string.
+\\ But it contain sequences like \\\\ and \" (although " is ok as well).
+\\ And interpolation \{6*7} too.
+```
