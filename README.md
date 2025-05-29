@@ -12,6 +12,8 @@ A small programming language that may be possibly used as a scripting language i
 
 ## Lexemes
 
+### Comments
+
 Comments start with // and end with the new-line character (one-line comments only):
 
 ```
@@ -19,7 +21,12 @@ not a comment // A comment
 not a comment
 ```
 
+### Identifiers
+
 Identifiers must start with a "letter" or _ and then may also contain digit characters.
+Identifiers containing two consequent underscores `__` are reserved for compiler/runtime needs.
+
+### Strings
 
 Strings may be presented by "one-liners", which can not contain new-line characters, and "multi-liners".
 Both can be of two subtypes: with or without escape sequences.
@@ -59,6 +66,6 @@ Multi-liner with escape sequences occupies separate lines each starting with `\\
 
 ```
 \\ This is a multi-liner with escapes. New lines are still part of the string.
-\\ But it contain sequences like \\\\ and \" (although " is ok as well).
-\\ And interpolation \{6*7} too.
+\\ Such literal can contain sequences like \\\\ and \" (although " is ok as well)
+\\ and interpolation \{6*7} too.
 ```
