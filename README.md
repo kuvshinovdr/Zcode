@@ -86,18 +86,28 @@ By default it converts to a UTF-8 encoded byte-array (without BOM).
 A character represent a Unicode codepoint.
 The way do write it is using a backquote and a character (single Unicode codepoint!) or an escape-sequence:
 
-* ``` `a ``` U+0065, small Latin a;
+* ``` `a ``` U+0061, small Latin a;
 * ``` `` ``` backquote symbol, U+0060, being a prefix, we don't need to escape it;
 * escape sequences: ``` `\\ ```, ``` `\t ```, ``` `\r ```, ``` `\n ```, ``` `\0 ```, ``` `\xhh ``` (one or two hex digits), ``` `\uhhhh ``` (four or eight hex digigs);
 * ``` `😀 ``` U+1F600, etc.
 
+Character literals have literal type `Literal.Character`.
+
 ### Numbers
 
-A number may start with optional base prefix of the following form:
+A number may start with an optional base prefix of the following form:
 
 * `#` hexadecimal prefix;
 * `n#` base-n prefix, where n may be 2, 4 or 8.
 
-Thus number literals may be encoded in base-2 (bits), base-4 (e.g. nucleotides), base-8 (PDP-8 legacy), base-10 (the default option with no prefix) or base-16 (nibbles, using abcdef/ABCDEF as additional digits).
+Therefore number literals may be encoded in base-2 (bits), base-4 (e.g. nucleotides), base-8 (PDP-8 legacy), base-10 (the default option with no prefix) or base-16 (nibbles, using abcdef/ABCDEF as additional digits).
 
-Apostrophe `'` 
+Apostrophe `'` may be used as digit separator: `1'000'000` is one million, `2#1001'0110` is 150.
+
+A number may include the "decimal" point and (optionally) fraction digits after it in the same base, of course.
+A number may also include an "exponent" part introduced either by `e`/`E` (for base-10) or `p`/`P` (for other bases).
+Then exponent value represented as a decimal integer follows.
+For base-10 it specifies a factor as the power of 10: e.g. `1e6` means "one million".
+For other bases it specifies a factor as the power of 2: e.g. `#1p10` is equivalent to `1024`.
+
+Number literals, no matter integer or not, have literal type `Literal.Number`.
