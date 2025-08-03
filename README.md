@@ -83,13 +83,13 @@ By default it converts to a UTF-8 encoded byte-array (without BOM).
 
 ### Characters
 
-A character represent single Unicode codepoint.
-The way do write it is using an apostrophe and a character (single Unicode codepoint!) or an escape-sequence:
+A character represent a Unicode codepoint.
+The way do write it is using a backquote and a character (single Unicode codepoint!) or an escape-sequence:
 
-* `'a` U+0065, small Latin a;
-* `''` apostrophe symbol, U+0027; as `'` is a prefix, we don't need to escape it;
-* escape sequences: `'\\`, `'\t`, `'\r`, `'\n`, `'\0`, `'\xhh` (one or two hex digits), `'\uhhhh` (four or eight hex digigs);
-* `'😀` U+1F600, etc.
+* ``` `a ``` U+0065, small Latin a;
+* ``` `` ``` backquote symbol, U+0060, being a prefix, we don't need to escape it;
+* escape sequences: ``` `\\ ```, ``` `\t ```, ``` `\r ```, ``` `\n ```, ``` `\0 ```, ``` `\xhh ``` (one or two hex digits), ``` `\uhhhh ``` (four or eight hex digigs);
+* ``` `😀 ``` U+1F600, etc.
 
 ### Numbers
 
